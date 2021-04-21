@@ -146,7 +146,7 @@ const NavMenu = styled.div`
     }
 
     span {
-      color: rgb(249, 249, 249);
+      color: #f9f9f9;
       font-size: 13px;
       letter-spacing: 1.4px;
       line-height: 1.1;
@@ -155,7 +155,7 @@ const NavMenu = styled.div`
       position: relative;
 
       &:before {
-        background-color: rgb(249, 249, 249);
+        background-color: #f9f9f9;
         border-radius: 0px 0px 4px 4px;
         bottom: -6px;
         content: "";
@@ -185,7 +185,7 @@ const NavMenu = styled.div`
 `;
 
 const Login = styled.a`
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: #090b13;
   padding: 8px 16px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -195,7 +195,7 @@ const Login = styled.a`
 
   &:hover {
     background-color: #f9f9f9;
-    color: rgba(0, 0, 0, 0.6);
+    color: #090b13;
   }
 `;
 
@@ -207,8 +207,8 @@ const Dropdown = styled.div`
   position: absolute;
   top: 50px;
   right: 0;
-  background-color: rgb(19, 19, 19);  
-  border: 1px solid rgba(151, 151, 151, 0.35);
+  background-color: #090b13;  
+  border: 1px solid #979797;
   border-radius: 5px;
   box-shadow: rgb(0 0 0 / 50%) 0 0 18px 0;
   padding: 10px;
@@ -221,7 +221,7 @@ const Dropdown = styled.div`
 
   &:hover {
     background-color: #f9f9f9;
-    color: rgba(0, 0, 0, 0.6);
+    color: #090b13;
   }
 `;
 
