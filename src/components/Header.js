@@ -1,8 +1,9 @@
+import { useEffect } from "react"
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { auth, provider } from "../firebase";
-import { selectUserName, selectUserPhoto, setUserLoginDetails} from "../features/user/userSlice"
+import { selectUserName, selectUserPhoto, setSignOutState, setUserLoginDetails} from "../features/user/userSlice"
 
 const Header = (props) => {
 
@@ -11,13 +12,29 @@ const Header = (props) => {
   const userName = useSelector(selectUserName)
   const userPhoto = useSelector(selectUserPhoto)
 
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if(user) {
+        setUser(user)
+        history.push("/home");
+      }
+    });
+  }, [userName]);
+
   const handleAuth = () => {
+    if(!userName) {
     auth.signInWithPopup(provider).then((result) => {
       setUser(result.user);
     }).catch((error) => {
       alert(error.message)
     });
-  };
+  } else if (userName) {
+    auth.signOut().then(() => {
+      dispatch(setSignOutState())
+      history.push("/")
+    }).catch((err) => alert(err.message))
+  }
+}
 
   const setUser = (user) => {
     dispatch(
@@ -31,10 +48,10 @@ const Header = (props) => {
 
   return (
   <Nav>
-    <Logo> <img src="images/logo.svg" alt="Disney+"/></Logo>
+    <Logo> <img src="images/logo.png" alt="Disney+"/></Logo>
 
     {
-      !userName ? <Login onClick = {handleAuth}>Login</Login> : 
+      !userName ? <Login onClick = {handleAuth}>Log in</Login> : 
       <> 
       
     
@@ -64,7 +81,12 @@ const Header = (props) => {
       <span>SERIES</span>
     </a>
     </NavMenu>
+    <SignOut>
     <UserImg src = {userPhoto} alt = {userName} />
+    <Dropdown>
+      <span onClick = {handleAuth}> Sign out</span>
+    </Dropdown>
+    </SignOut>
     </>
   }
   </Nav>
@@ -89,7 +111,7 @@ const Nav = styled.nav`
 const Logo = styled.a`
   padding: 0;
   width: 80px;
-  margin-top: 4px;
+  margin-bottom: 14px;
   max-height: 70px;
   font-size: 0;
   display: inline-block;
@@ -180,5 +202,51 @@ const Login = styled.a`
 const UserImg = styled.img`
   height: 100%;
 `;
+
+const Dropdown = styled.div`
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: rgb(19, 19, 19);  
+  border: 1px solid rgba(151, 151, 151, 0.35);
+  border-radius: 5px;
+  box-shadow: rgb(0 0 0 / 50%) 0 0 18px 0;
+  padding: 10px;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  width: 100px;
+  opacity: 0;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f9f9f9;
+    color: rgba(0, 0, 0, 0.6);
+  }
+`;
+
+const SignOut = styled.div`
+  position: relative;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ${UserImg} {
+    border-radius: 100px;
+    cursor: pointer;
+  }
+
+  &:hover {
+    ${Dropdown} {
+      opacity: 1;
+      transition-duration: 0.4s;
+
+    }
+  }
+`;
+
+
 
 export default Header
