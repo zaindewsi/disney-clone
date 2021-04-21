@@ -5,12 +5,12 @@ const Login = (props) => {
     <Container>
       <Content>
         <CTA>
-          <CTALogoOne src="/images/cta-logo-one.svg" alt="" />
+          <CTALogoOne src="/images/cta-logo-one.svg" alt="hulu disney espn logo" />
           <SignUp>GET PREMIER ACCESS NOW</SignUp>
           <Description>
           See Raya and the Last Dragon before it's available to all Disney+ subscribers on June 4. Watch as many times as you like with Premier Access for $34.99 and your Disney+ subscription.
           </Description>
-          <CTALogoTwo src="/images/cta-logo-two.png" alt="" />
+          <CTALogoTwo src="/images/cta-logo-two.png" alt="disney logos" />
         </CTA>
         <BgImage />
       </Content>
@@ -85,7 +85,7 @@ const SignUp = styled.a`
   font-size: 18px;
   padding: 16.5px 0;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 5px;
   &:hover {
     background-color: #0483ee;
   }
