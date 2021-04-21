@@ -1,12 +1,47 @@
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { auth, provider } from "../firebase";
+import { selectUserName, setSignOutState, setUserLoginDetails } from "../features/user/userSlice"
 
 const Login = (props) => {
+
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const userName = useSelector(selectUserName)
+
+
+  const handleAuth = () => {
+    if(!userName) {
+    auth.signInWithPopup(provider).then((result) => {
+      setUser(result.user);
+    }).catch((error) => {
+      alert(error.message)
+    });
+  } else if (userName) {
+    auth.signOut().then(() => {
+      dispatch(setSignOutState())
+      history.push("/")
+    }).catch((err) => alert(err.message))
+  }
+}
+const setUser = (user) => {
+  dispatch(
+    setUserLoginDetails({
+      name: user.displayName,
+      email: user.email,
+      photo: user.photoURL,
+    })
+    );
+};
+
+
   return (
     <Container>
       <Content>
         <CTA>
           <CTALogoOne src="/images/cta-logo-one.svg" alt="hulu disney espn logo" />
-          <SignUp>GET PREMIER ACCESS NOW</SignUp>
+          <SignUp onClick = {handleAuth}>GET FREE PREMIER ACCESS NOW</SignUp>
           <Description>
           See Raya and the Last Dragon before it's available to all Disney+ subscribers on June 4. Watch as many times as you like with Premier Access for $34.99 and your Disney+ subscription.
           </Description>
