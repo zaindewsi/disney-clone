@@ -44,7 +44,7 @@ const setUser = (user) => {
           <SignUp onClick = {handleAuth}>GET FREE PREMIER ACCESS NOW</SignUp>
           <Description>
           <h2>Welcome to Dewsi+</h2>
-          Feel free to login using Google authentication to take a look around. Once you enter the site, you'll be able to see some trailers for some Disney+ shows and movies. 
+          Feel free to login using Google authentication and take a look around. Once you enter the site, you'll be able to browse a catalogue of Disney content and view some trailers!
           <p>Enjoy!</p>
           </Description>
           <CTALogoTwo src="/images/cta-logo-two.png" alt="disney logos" />
