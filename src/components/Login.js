@@ -43,7 +43,9 @@ const setUser = (user) => {
           <CTALogoOne src="/images/logo.png" alt="hulu disney espn logo" />
           <SignUp onClick = {handleAuth}>GET FREE PREMIER ACCESS NOW</SignUp>
           <Description>
-          See Raya and the Last Dragon before it's available to all Disney+ subscribers on June 4. Watch as many times as you like with Premier Access for $34.99 and your Disney+ subscription.
+          <h2>Welcome to Dewsi+</h2>
+          This is a Disney+ clone. Feel free to login or signup using Google authentication to take a look around. Once you enter the site, you'll be able to see some trailers for some Disney+ shows and movies. 
+          <p>Enjoy!</p>
           </Description>
           <CTALogoTwo src="/images/cta-logo-two.png" alt="disney logos" />
         </CTA>
@@ -89,7 +91,7 @@ const BgImage = styled.div`
 `;
 
 const CTA = styled.div`
-    margin: 0px auto 2vw;
+    margin: auto;
     max-width: 650px;
     flex-flow: column wrap;
     display: flex;
@@ -99,7 +101,7 @@ const CTA = styled.div`
     align-items: center;
     text-align: center;
     transition: opacity 0.2s ease 0s;
-    width: 100%;
+    width: 100%
 `;
 
 const CTALogoOne = styled.img`
@@ -109,7 +111,7 @@ const CTALogoOne = styled.img`
   display: block;
   width: 60%;
   position: relative;
-  top: 50px;
+  top: 7%;
   z-index: 0;
 
   @media (max-width: 768px) {
@@ -136,7 +138,7 @@ const SignUp = styled.a`
 
 const Description = styled.p`
   color: hsla(0, 0%, 95.3%, 1);
-  font-size: 11px;
+  font-size: 12px;
   margin: 0 0 24px;
   line-height: 1.5;
   letter-spacing: 1.5px;
