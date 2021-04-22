@@ -87,6 +87,7 @@ const Wrap = styled.div`
     box-shadow: rgb(0 0 0 / 69%) 0 26px 30px -10px, rgb(0 0 0 / 73%) 0 16px 10px -10px;
     transform: scale(1.05);
     border-color: #f9f9f9;
+    cursor: default;
     
     video {
       opacity: 1;

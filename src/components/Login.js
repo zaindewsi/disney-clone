@@ -40,7 +40,7 @@ const setUser = (user) => {
     <Container>
       <Content>
         <CTA>
-          <CTALogoOne src="/images/cta-logo-one.svg" alt="hulu disney espn logo" />
+          <CTALogoOne src="/images/logo.png" alt="hulu disney espn logo" />
           <SignUp onClick = {handleAuth}>GET FREE PREMIER ACCESS NOW</SignUp>
           <Description>
           See Raya and the Last Dragon before it's available to all Disney+ subscribers on June 4. Watch as many times as you like with Premier Access for $34.99 and your Disney+ subscription.
@@ -103,11 +103,18 @@ const CTA = styled.div`
 `;
 
 const CTALogoOne = styled.img`
-  margin-bottom: 12px;
+  margin-bottom: 0px;
   max-width: 600px;
   min-height: 1px;
   display: block;
-  width: 100%;
+  width: 60%;
+  position: relative;
+  top: 50px;
+  z-index: 0;
+
+  @media (max-width: 768px) {
+    width: 80%
+  }
 `;
 
 const SignUp = styled.a`
@@ -121,6 +128,7 @@ const SignUp = styled.a`
   padding: 16.5px 0;
   border: 1px solid transparent;
   border-radius: 5px;
+  z-index: 1;
   &:hover {
     background-color: #0483ee;
   }

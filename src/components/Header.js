@@ -48,7 +48,11 @@ const Header = (props) => {
 
   return (
   <Nav>
-    <Logo> <img src="images/logo.png" alt="Disney+"/></Logo>
+    <Logo>
+    <a href = "/home">
+    <img src="images/logo.png" alt="Disney+"/>
+    </a>
+    </Logo>
 
     {
       !userName ? <Login onClick = {handleAuth}>Log in</Login> : 
@@ -60,26 +64,26 @@ const Header = (props) => {
       <img src="/images/home-icon.svg" alt="HOME" />
       <span>HOME</span>
     </a>
-    <a href="/home">
+    <div>
       <img src="/images/search-icon.svg" alt="SEARCH" />
       <span>SEARCH</span>
-    </a>
-    <a href="/home">
+    </div>
+    <div>
       <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
       <span>WATCHLIST</span>
-    </a>
-    <a href="/home">
+    </div>
+    <div>
       <img src="/images/original-icon.svg" alt="ORIGINALS" />
       <span>ORIGINALS</span>
-    </a>
-    <a href="/home">
+    </div>
+    <div>
       <img src="/images/movie-icon.svg" alt="MOVIES" />
       <span>MOVIES</span>
-    </a>
-    <a href="/home">
+    </div>
+    <div>
       <img src="/images/series-icon.svg" alt="SERIES" />
       <span>SERIES</span>
-    </a>
+    </div>
     </NavMenu>
     <SignOut>
     <UserImg src = {userPhoto} alt = {userName} />
@@ -133,6 +137,52 @@ const NavMenu = styled.div`
   margin-right: auto;
   margin-left: 25px;
   
+  div {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    cursor: default;
+
+    img {
+      height: 20px;
+      min-width: 20px;
+      width: 20px;
+      z-index: auto;
+    }
+
+    span {
+      color: #f9f9f9;
+      font-size: 13px;
+      letter-spacing: 1.4px;
+      line-height: 1.1;
+      padding: 2px 0;
+      white-space: nowrap;
+      position: relative;
+
+      &:before {
+        background-color: #f9f9f9;
+        border-radius: 0px 0px 4px 4px;
+        bottom: -6px;
+        content: "";
+        height: 2px;
+        right: 0;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        transform-origin: left center;
+        transform: scaleX(0);
+        transition: all 250ms cubic-bezier(0.25, 0.5, 0.45, 0.95);
+      }
+    }
+
+    &:hover {
+      span:before {
+        transform: scaleX(1);
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
   a {
     display: flex;
     align-items: center;

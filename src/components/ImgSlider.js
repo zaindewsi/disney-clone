@@ -16,27 +16,27 @@ let settings = {
   return (
       <Carousel {...settings}>
       <Wrap>
-        <a>
+        <div>
           <img src = "/images/slider-badging.jpg" alt = "" />
-        </a>
+        </div>
       </Wrap>
 
       <Wrap>
-        <a>
+        <div>
           <img src = "/images/slider-scale.jpg" alt = "" />
-        </a>
+        </div>
       </Wrap>
 
       <Wrap>
-        <a>
+        <div>
           <img src = "/images/slider-badag.jpg" alt = "" />
-        </a>
+        </div>
       </Wrap>
 
       <Wrap>
-        <a>
+        <div>
           <img src = "/images/slider-scales.jpg" alt = "" />
-        </a>
+        </div>
       </Wrap>
       
       </Carousel>
@@ -86,7 +86,7 @@ const Wrap = styled.div`
   border-radius: 5px;
   position: relative;
 
-  a {
+  div {
     border-radius: 5px;
     box-shadow: rgb(0 0 0 / 69%) 0 26px 30px -10px, rgb(0 0 0 / 73%) 0 16px 10px -10px;
     cursor: pointer;
@@ -102,7 +102,8 @@ const Wrap = styled.div`
   &:hover {
     padding: 0;
     border: 2px solid #f9f9f9;
-    transition-duration: 300ms
+    transition-duration: 300ms;
+    cursor: default;
   }
   }
 `;
